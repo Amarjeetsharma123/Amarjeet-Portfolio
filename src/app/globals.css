@@ -1,26 +1,207 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #030014;
+  --foreground: #ffffff;
+
+  /* Neon Palette */
+  --neon-cyan: #00f3ff;
+  --neon-purple: #bd00ff;
+  --neon-pink: #ff0099;
+  --neon-yellow: #ffd700;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@theme {
+  --font-sans: 'Space Grotesk', system-ui, sans-serif;
+  --font-display: 'Syne', system-ui, sans-serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --color-bg: var(--background);
+  --color-neon-cyan: var(--neon-cyan);
+  --color-neon-purple: var(--neon-purple);
+  --color-neon-pink: var(--neon-pink);
+
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+  /* Custom cursor will be added */
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neon-cyan);
+  border-radius: 10px;
+}
+
+/* Text Selection */
+::selection {
+  background: var(--neon-cyan);
+  color: #000;
+}
+
+/* Text Stroke for Marquee */
+.stroke-text {
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.1);
+  color: transparent;
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Glassmorphism Utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-hover:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(0, 243, 255, 0.2);
+}
+
+/* Aurora Background - Pure CSS, GPU Accelerated */
+.aurora-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  filter: blur(80px);
+  opacity: 0.6;
+}
+
+.aurora {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+.aurora-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 243, 255, 0.4) 0%, transparent 70%);
+  top: -20%;
+  left: -10%;
+  animation: aurora1 20s ease-in-out infinite;
+}
+
+.aurora-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(189, 0, 255, 0.4) 0%, transparent 70%);
+  bottom: -20%;
+  right: -10%;
+  animation: aurora2 25s ease-in-out infinite;
+}
+
+.aurora-3 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 0, 128, 0.3) 0%, transparent 70%);
+  top: 40%;
+  left: 30%;
+  animation: aurora3 30s ease-in-out infinite;
+}
+
+@keyframes aurora1 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(50px, 30px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-30px, 50px) scale(0.9);
+  }
+}
+
+@keyframes aurora2 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(-40px, -40px) scale(1.05);
+  }
+
+  66% {
+    transform: translate(40px, -20px) scale(0.95);
+  }
+}
+
+@keyframes aurora3 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(60px, -30px) scale(1.1);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradient 3s ease infinite;
 }
