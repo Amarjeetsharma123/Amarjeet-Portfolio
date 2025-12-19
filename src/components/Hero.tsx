@@ -103,7 +103,7 @@ export const Hero = () => {
                                 <img
                                     src="/amar.jpg"   // public folder OR replace with imported image
                                     alt="Profile"
-                                    className="w-40 h-40 md:w-64 md:h-64 rounded-full border-4 border-cyan-400 shadow-xl object-cover"
+                                    className="w-80 h-80 md:w-100 md:h-100 rounded-full border-4 border-cyan-400 shadow-xl object-cover"
                                 />
 
                             </div>
