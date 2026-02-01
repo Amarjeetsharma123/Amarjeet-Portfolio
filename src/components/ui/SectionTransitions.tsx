@@ -11,11 +11,12 @@ interface SectionRevealProps {
 }
 
 const directionVariants = {
-    up: { y: 100, opacity: 0 },
-    down: { y: -100, opacity: 0 },
-    left: { x: 100, opacity: 0 },
-    right: { x: -100, opacity: 0 },
+    up: { y: 50, opacity: 0 },
+    down: { y: -50, opacity: 0 },
+    left: { x: 30, opacity: 0 },
+    right: { x: -30, opacity: 0 },
 };
+
 
 export const SectionReveal = ({
     children,

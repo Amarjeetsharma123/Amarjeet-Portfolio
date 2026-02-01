@@ -6,13 +6,13 @@ import { TextReveal, GlitchText } from "@/components/ui/TextEffects";
 
 export const Hero = () => {
     return (
-        <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 pt-24">
+        <section id="hero" className="relative min-h-[100dvh] md:min-h-screen flex items-center justify-center overflow-hidden px-6 pt-24">
 
             {/* Background Marquee - subtle */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] -rotate-12 opacity-[0.03] pointer-events-none select-none">
-                <div className="flex whitespace-nowrap gap-8 animate-marquee">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[100vw] overflow-hidden -rotate-12 opacity-[0.03] pointer-events-none select-none">
+                <div className="flex whitespace-nowrap gap-8 animate-marquee w-[200%] md:w-[150%]">
                     {Array(6).fill("AMARJEET SHARMA").map((item, i) => (
-                        <h1 key={i} className="text-[10rem] font-black font-display" style={{ WebkitTextStroke: "1px rgba(255,255,255,0.3)" }}>
+                        <h1 key={i} className="text-[6rem] md:text-[10rem] font-black font-display" style={{ WebkitTextStroke: "1px rgba(255,255,255,0.3)" }}>
                             {item}
                         </h1>
                     ))}
@@ -20,7 +20,7 @@ export const Hero = () => {
             </div>
 
             {/* Ambient Glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-neon-purple/20 rounded-full blur-[100px] md:blur-[150px] animate-pulse pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] md:w-[600px] md:h-[600px] bg-neon-purple/20 rounded-full blur-[80px] md:blur-[150px] animate-pulse pointer-events-none" />
 
             <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center z-20">
                 <div className="space-y-6 md:space-y-8 text-center lg:text-left order-2 lg:order-1">
@@ -40,7 +40,7 @@ export const Hero = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.7 }}
                     >
-                        <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold leading-[0.9] font-display text-white">
+                        <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold leading-[1] md:leading-[0.9] font-display text-white">
                             FULL STACK <br />
                             <GlitchText className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink">
                                 DEVELOPER
@@ -53,7 +53,7 @@ export const Hero = () => {
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.8, delay: 0.9 }}
                     >
-                        <TextReveal className="text-gray-400 text-base md:text-xl max-w-lg mx-auto lg:mx-0 leading-relaxed font-sans" delay={1}>
+                        <TextReveal className="text-gray-400 text-sm md:text-xl max-w-lg mx-auto lg:mx-0 leading-relaxed font-sans" delay={1}>
                             I am Amarjeet Sharma. I build high-performance, scalable web applications with heavy animations and solid backend logic.
                         </TextReveal>
                     </motion.div>
@@ -86,7 +86,7 @@ export const Hero = () => {
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ duration: 1, delay: 1 }}
-                        className="w-[280px] h-[280px] md:w-[450px] md:h-[450px] relative"
+                        className="w-[240px] h-[240px] md:w-[450px] md:h-[450px] relative"
                     >
                         {/* Outer Ring */}
                         <div className="absolute inset-0 rounded-full border border-white/5 animate-spin" style={{ animationDuration: "20s" }} />
@@ -103,7 +103,7 @@ export const Hero = () => {
                                 <img
                                     src="/amar.jpg"   // public folder OR replace with imported image
                                     alt="Profile"
-                                    className="w-80 h-80 md:w-100 md:h-100 rounded-full border-4 border-cyan-400 shadow-xl object-cover"
+                                    className="w-full h-full rounded-full border-4 border-cyan-400 shadow-xl object-cover"
                                 />
 
                             </div>
@@ -134,7 +134,7 @@ export const Hero = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 2 }}
-                className="absolute bottom-8 left-1/2 -translate-x-1/2"
+                className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block"
             >
                 <motion.div
                     animate={{ y: [0, 10, 0] }}

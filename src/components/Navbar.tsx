@@ -24,6 +24,15 @@ export const Navbar = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+    }, [isMobileMenuOpen]);
+
+
     return (
         <>
             <motion.nav
@@ -33,8 +42,8 @@ export const Navbar = () => {
                 className={cn(
                     "fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500",
                     isScrolled
-                        ? "w-[90%] max-w-3xl"
-                        : "w-[95%] max-w-7xl"
+                        ? "w-[85%] max-w-3xl"
+                        : "w-[90%] max-w-7xl"
                 )}
             >
                 {/* Glassmorphism Container */}
@@ -42,13 +51,13 @@ export const Navbar = () => {
                     "relative rounded-2xl transition-all duration-500",
                     isScrolled
                         ? "bg-white/[0.03] backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/20"
-                        : "bg-transparent"
+                        : "bg-transparent md:bg-white/[0.02]"
                 )}>
                     {/* Inner Glow */}
                     <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-neon-cyan/5 via-transparent to-neon-purple/5 opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-                    <div className="relative px-6 py-4 flex items-center justify-between">
-                        <a href="#hero" className="font-display font-bold text-2xl tracking-tighter text-white group">
+                    <div className="relative px-4 md:px-6 py-3 md:py-4 flex items-center justify-between">
+                        <a href="#hero" className="font-display font-bold text-xl md:text-2xl tracking-tighter text-white group">
                             AS<span className="text-neon-cyan group-hover:animate-pulse">.</span>
                         </a>
 
@@ -93,26 +102,38 @@ export const Navbar = () => {
                         initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
                         animate={{ opacity: 1, backdropFilter: "blur(20px)" }}
                         exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-                        className="fixed inset-0 z-40 bg-black/80 backdrop-blur-xl pt-28 px-6"
+                        className="fixed inset-0 z-40 bg-black/90 backdrop-blur-2xl flex flex-col items-center justify-center px-6"
                     >
-                        <div className="flex flex-col items-center gap-6">
+                        <div className="flex flex-col items-center gap-8 w-full max-w-sm">
                             {navLinks.map((link, i) => (
                                 <motion.a
                                     key={link.name}
                                     href={link.href}
-                                    initial={{ opacity: 0, y: 20 }}
+                                    initial={{ opacity: 0, y: 30 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: i * 0.1 }}
+                                    transition={{ delay: i * 0.1, duration: 0.5 }}
                                     onClick={() => setIsMobileMenuOpen(false)}
-                                    className="text-3xl font-display font-bold text-white hover:text-neon-cyan transition-colors"
+                                    className="text-4xl font-display font-bold text-white hover:text-neon-cyan transition-colors"
                                 >
                                     {link.name}
                                 </motion.a>
                             ))}
+
+                            <motion.a
+                                href="mailto:sharmaamarjeet239@gmail.com"
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: navLinks.length * 0.1, duration: 0.5 }}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                className="mt-4 px-8 py-4 bg-neon-cyan text-black font-black uppercase tracking-widest rounded-sm w-full text-center"
+                            >
+                                Hire Me
+                            </motion.a>
                         </div>
                     </motion.div>
                 )}
             </AnimatePresence>
+
         </>
     );
 };

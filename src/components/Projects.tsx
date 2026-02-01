@@ -72,7 +72,8 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                 }}
                 className="group relative w-full"
             >
-                <div className="relative rounded-2xl bg-gradient-to-br from-white/[0.07] to-white/[0.02] p-8 border border-white/10 hover:border-neon-cyan/30 transition-all duration-500 backdrop-blur-sm overflow-hidden">
+                <div className="relative rounded-2xl bg-gradient-to-br from-white/[0.07] to-white/[0.02] p-6 md:p-8 border border-white/10 hover:border-neon-cyan/30 transition-all duration-500 backdrop-blur-sm overflow-hidden">
+
                     {/* Hover Glow */}
                     <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/10 to-neon-purple/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 

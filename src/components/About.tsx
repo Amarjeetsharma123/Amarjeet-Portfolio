@@ -43,13 +43,14 @@ export const About = () => {
                     </SectionReveal>
 
                     {/* Right - Skills Grid */}
-                    <StaggerContainer className="grid grid-cols-2 gap-4">
+                    <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {skills.map((skill) => (
                             <StaggerItem key={skill.name}>
                                 <motion.div
                                     whileHover={{ scale: 1.05, y: -5 }}
                                     className="group p-6 bg-white/[0.03] border border-white/10 rounded-xl hover:border-neon-cyan/30 transition-all duration-300 cursor-default backdrop-blur-sm"
                                 >
+
                                     <div className={`mb-4 text-${skill.color} opacity-80 group-hover:opacity-100 transition-opacity`}>
                                         {skill.icon}
                                     </div>
