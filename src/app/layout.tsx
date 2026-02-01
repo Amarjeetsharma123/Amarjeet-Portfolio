@@ -5,6 +5,9 @@ import { CustomCursor } from "@/components/ui/CustomCursor";
 import { LenisProvider } from "@/components/LenisProvider";
 import { Preloader } from "@/components/Preloader";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { SWRegistration } from "@/components/SWRegistration";
+import { InstallButton } from "@/components/InstallButton";
+
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -19,7 +22,17 @@ const syne = Syne({
 export const metadata: Metadata = {
   title: "Amarjeet Sharma | Portfolio",
   description: "Full Stack Engineer specializing in premium web experiences.",
+  manifest: "/manifest.json",
 };
+
+export const viewport = {
+  themeColor: "#000000",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
+
+
 
 export default function RootLayout({
   children,
@@ -33,8 +46,11 @@ export default function RootLayout({
           <Preloader />
           <ScrollProgress />
           <CustomCursor />
+          <SWRegistration />
+          <InstallButton />
           {children}
         </LenisProvider>
+
       </body>
     </html>
   );
